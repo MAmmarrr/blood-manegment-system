@@ -1,0 +1,95 @@
+﻿@model IEnumerable<BloodBankManegmentSystem.Models.Donors>
+@{
+    ViewBag.Title = "DonorList";
+    Layout = "~/Views/Shared/_guestLayout.cshtml";
+}
+<h1>Donors List</h1>
+@if (!Model.Any())
+{
+    <p>We don't have any donors yet</p>
+}
+else
+{
+    <table id="donors" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Blood Group</th>
+                <th>Mobile</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+}
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#donors").DataTable({
+                ajax: {
+                    url: "/api/donors",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+
+                    },
+                    {
+                        data: "email"
+                    },
+                    {
+                        data: "GenderId",
+                        render: function (data, type, donor) {
+                            return data == 1 ? "Male" : "Female";
+                        }
+                    },
+                    {
+                        data: "BloodTypeId",
+                        render: function (data, type, donor) {
+                            switch (data) {
+                                case 1:
+                                    return "A+"
+                                case 2:
+                                    return "A-"
+                                case 3:
+                                    return "B+"
+                                case 4:
+                                    return "B-"
+                                case 5:
+                                    return "O+"
+                                case 6:
+                                    return "O-"
+                                case 7:
+                                    return "AB+"
+                                case 8:
+                                    return "AB-"
+                                default:
+                                    return "Invalid"
+                            }
+                        }
+                    },
+                    {
+                        data: "mobileNum",
+                    },
+                    {
+                        data: "age",
+                    },
+                    {
+                        data: "address",
+                    },
+                    {
+                        data: "Message",
+                    },
+                    
+                ]
+            });
+        });
+    </script>
+}
