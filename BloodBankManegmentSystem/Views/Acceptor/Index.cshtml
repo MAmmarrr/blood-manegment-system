@@ -1,0 +1,111 @@
+﻿@model IEnumerable<BloodBankManegmentSystem.Models.Acceptors>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Acceptors List</h1>
+@if (!Model.Any())
+{
+    <p>We don't have any Acceptors yet</p>
+}
+else
+{
+<table id="donors" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Blood Group</th>
+            <th>Mobile</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+}
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#donors").DataTable({
+                ajax: {
+                    url: "/api/acceptors",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        
+                    },
+                    {
+                        data: "email"
+                    },
+                    {
+                        data: "GenderId",
+                        render: function (data, type, donor) {
+                            return data == 1 ? "Male" : "Female";
+                        }
+                    },
+                    {
+                        data: "BloodTypeId",
+                        render: function (data, type, donor) {
+                            switch (data) {
+                                case 1:
+                                    return "A+"
+                                case 2:
+                                    return "A-"
+                                case 3:
+                                    return "B+"
+                                case 4:
+                                    return "B-"
+                                case 5:
+                                    return "O+"
+                                case 6:
+                                    return "O-"
+                                case 7:
+                                    return "AB+"
+                                case 8:
+                                    return "AB-"
+                                default:
+                                    return "Invalid"
+                            }
+                        }
+                    },
+                    {
+                        data: "mobileNum",
+                    },
+                    {
+                        data: "age",
+                    },
+                    {
+                        data: "address",
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-donor-id =" + data + ">Delete</button>";
+                        }
+                    }
+                ]
+            });
+            $("#donors").on("click", ".js-delete", function () {
+                var button = $(this);
+                bootbox.confirm("Are you sure you want to delete this Acceptor?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/acceptors/" + button.attr("data-donor-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}

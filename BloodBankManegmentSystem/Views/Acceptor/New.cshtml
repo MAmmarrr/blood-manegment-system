@@ -1,0 +1,54 @@
+﻿@model BloodBankManegmentSystem.ViewModels.AcceptorFormViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Acceptor</h2>
+
+
+@using (Html.BeginForm("Create", "Acceptor"))
+{
+    @Html.ValidationSummary(true, "Please fix the following errors.")
+    <div class="form-group">
+        @Html.LabelFor(m => m.Acceptor.name)
+        @Html.TextBoxFor(m => m.Acceptor.name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Acceptor.name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Acceptor.BloodTypeId)
+        @Html.DropDownListFor(m => m.Acceptor.BloodTypeId, new SelectList(Model.BloodTypes, "id", "bloodGroup"), "Select Blood Group", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Acceptor.mobileNum)
+        @Html.TextBoxFor(m => m.Acceptor.mobileNum, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Acceptor.mobileNum)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Acceptor.email)
+        @Html.TextBoxFor(m => m.Acceptor.email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Acceptor.email)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Acceptor.GenderId)
+        @Html.DropDownListFor(m => m.Acceptor.GenderId, new SelectList(Model.Gender, "id", "gender"), "Select Gender", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Acceptor.GenderId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Acceptor.age)
+        @Html.TextBoxFor(m => m.Acceptor.age, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Acceptor.age)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Acceptor.address)
+        @Html.TextBoxFor(m => m.Acceptor.address, new { @class = "form-control" })
+    </div>
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

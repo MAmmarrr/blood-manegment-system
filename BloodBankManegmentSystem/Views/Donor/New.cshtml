@@ -1,0 +1,58 @@
+﻿@model BloodBankManegmentSystem.ViewModels.DonorFormViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Donor</h2>
+
+
+@using (Html.BeginForm("Create", "Donor"))
+{
+    @Html.ValidationSummary(true, "Please fix the following errors.")
+    <div class="form-group">
+        @Html.LabelFor(m => m.Donor.name)
+        @Html.TextBoxFor(m => m.Donor.name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Donor.name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Donor.BloodTypeId)
+        @Html.DropDownListFor(m => m.Donor.BloodTypeId, new SelectList(Model.BloodTypes, "id", "bloodGroup"), "Select Blood Group", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Donor.mobileNum)
+        @Html.TextBoxFor(m => m.Donor.mobileNum, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Donor.mobileNum)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Donor.email)
+        @Html.TextBoxFor(m => m.Donor.email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Donor.email)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Donor.GenderId)
+        @Html.DropDownListFor(m => m.Donor.GenderId, new SelectList(Model.Gender, "id", "gender"), "Select Gender", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Donor.GenderId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Donor.age)
+        @Html.TextBoxFor(m => m.Donor.age, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Donor.age)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Donor.address)
+        @Html.TextBoxFor(m => m.Donor.address, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Donor.Message)
+        @Html.TextBoxFor(m => m.Donor.Message, new { @class = "form-control" })
+    </div>
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
