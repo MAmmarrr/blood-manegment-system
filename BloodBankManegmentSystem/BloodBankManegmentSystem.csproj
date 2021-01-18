@@ -300,8 +300,6 @@
     <Compile Include="ViewModels\SampleViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Images\19198095.jpg" />
-    <Content Include="Content\Images\6262.jpg" />
     <Content Include="Content\bootstrap-lumen.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -414,7 +412,6 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
-    <Content Include="Content\Images\doctor-3295045.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
