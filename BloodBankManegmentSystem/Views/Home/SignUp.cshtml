@@ -1,0 +1,194 @@
+﻿
+@{
+    ViewBag.Title = "SignUp";
+    Layout =null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Sign up</title>
+    <style>
+        body {
+            margin: 24px;
+            box-sizing: border-box;
+            padding: 0;
+            font-family: Montserrat;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #4B7FB7;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 44px;
+            line-height: 54px;
+        }
+
+        h2 {
+            color: #4B7FB7;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        .form {
+            margin-top: -20px;
+            height: 25rem;
+            width: 30rem;
+            background-color: rgb(255, 255, 255);
+            border-radius: 2px;
+            align-self: center;
+            font-size: 14px;
+            padding: 20px 0px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+        }
+
+        input, select {
+            font-size: 18px;
+            padding: 20px 6px;
+            width: 100%;
+            color: #333;
+            background-color: transparent;
+            outline: none;
+            border: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.288);
+            -webkit-transition: all .2s;
+            transition: all .2s;
+            border-bottom: 1px solid;
+        }
+
+        select {
+            width: 102%;
+            opacity: 0.8;
+        }
+
+            select:focus {
+                color: #4B7FB7;
+                border-bottom: 2px solid #4B7FB7;
+                font-size: 18px;
+            }
+
+        input:focus {
+            color: #4B7FB7;
+            border-bottom: 2px solid #4B7FB7;
+            font-size: 18px;
+        }
+
+            input:focus::-webkit-input-placeholder {
+                visibility: hidden;
+            }
+
+            input:focus:-ms-input-placeholder {
+                visibility: hidden;
+            }
+
+            input:focus::-ms-input-placeholder {
+                visibility: hidden;
+            }
+
+            input:focus::placeholder {
+                visibility: hidden;
+            }
+
+        .btns {
+            margin-top: 60px;
+            margin-left:140px;
+        }
+
+        .btn {
+            margin: auto;
+            width: 230px;
+            height: 55px;
+            padding: 15px 80px;
+            text-decoration: none;
+            background: linear-gradient(93.38deg, #9598FF 0%, #7479FF 100%);
+            color: #fff;
+            box-shadow: 5px 15px 25px rgba(143, 147, 255, 0.45);
+            border-radius: 2px;
+        }
+
+        .btn-login {
+            margin-right: 10px;
+        }
+
+        .bttn {
+            padding: 10px;
+            margin-top: 40px;
+            width: 70%;
+            border: 0px;
+            outline: none;
+            color: rgb(255, 255, 255);
+            background: linear-gradient(93.38deg, #9598FF 0%, #7479FF 100%);
+            box-shadow: 5px 15px 25px rgba(143, 147, 255, 0.45);
+            border-radius: 2px;
+            -ms-grid-column-align: center;
+            justify-self: center;
+            -ms-flex-item-align: center;
+            -ms-grid-row-align: center;
+            align-self: center;
+            -webkit-transition: all .2s;
+            cursor: pointer;
+            transition: all .2s;
+            font-size: 20px;
+        }
+
+            .bttn:hover {
+                background-color: #cc2921;
+                -webkit-transform: scale(1.1) translateY(2px);
+                transform: scale(1.1) translateY(2px);
+            }
+
+        form span {
+            padding-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="main-heading">Blood Bank Management System</h1>
+    <h2>Registeration</h2>
+    <div class="sign-up">
+        <form class="form">
+            <input type="name" id="Name" name="name" placeholder="Enter Full Name" class="form_name form_input">
+            <input type="email" id="Email" name="email" placeholder="Enter  Email" class="form_email form_input">
+            <select name="role" id="role" class="role form_input">
+                <option value="Donor">Donor</option>
+                <option value="Acceptor">Acceptor</option>
+            </select>
+            <select name="blood" id="blood" class="blood form_input">
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+            </select>
+            <input type="tel" id="ph-no" name="ph-no" placeholder="Phone number" class="form_number form_input">
+            <input type="password" id="password" name="password" placeholder="Enter  Password"
+                   class="form_password form_input">
+            <div class="btns">
+                @Html.ActionLink("Sign up", "Dashboard", "Home", new { area = "" }, new { @class = "btn btn-login" })
+            </div>
+            <span>
+                already registered?
+                @Html.ActionLink("Login", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </span>
+        </form>
+    </div>
+</body>
+</html>
