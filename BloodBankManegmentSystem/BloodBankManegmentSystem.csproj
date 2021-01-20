@@ -284,6 +284,7 @@
       <DependentUpon>202012311048508_acceptor.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Acceptors.cs" />
     <Compile Include="Models\AccountViewModel.cs" />
     <Compile Include="Models\Donors.cs" />
     <Compile Include="Models\BloodType.cs" />
