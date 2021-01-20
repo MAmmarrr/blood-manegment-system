@@ -2,7 +2,87 @@
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_guestLayout.cshtml";
 }
-<div class="container">
-   @*<img src="~/Content/Images/19198095.jpg"/>*@
-</div>
- 
+<head>
+    <style>
+        body {
+            margin: 24px;
+            box-sizing: border-box;
+            padding: 0;
+            font-family: Montserrat;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-items: center;
+            justify-content: space-between;
+        }
+
+        .left {
+            margin-bottom: 100px;
+            margin-left: 100px;
+        }
+
+        .main-heading {
+            padding-bottom: 90px;
+            color: #4B7FB7;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 44px;
+            line-height: 54px;
+            width: 600px;
+        }
+
+        .main-text {
+            width: 500px;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 29px;
+            color: #3D342A;
+        }
+
+        .btns {
+            margin-top: 60px;
+        }
+
+        .btn {
+            width: 230px;
+            height: 55px;
+            padding: 15px 80px;
+            text-decoration: none;
+            background: linear-gradient(93.38deg, #9598FF 0%, #7479FF 100%);
+            color: #fff;
+            box-shadow: 5px 15px 25px rgba(143, 147, 255, 0.45);
+            border-radius: 2px;
+        }
+
+        .btn-login {
+            margin-right: 10px;
+        }
+
+        .btn-signup {
+            background: transparent !important;
+            color: #4B7FB7;
+            border: 1px solid #4B7FB7;
+        }
+
+
+
+
+        .right img {
+            height: 700px;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <p class="main-text">We are here to provide you best way to find your blood donation. You can visit our blood bank management system from everywhere anytime.</p>
+        </div>
+        <div class="right">
+            <img src="~/Content/Images/img1.jpg" alt="main-image" class="main-img">
+        </div>
+    </div>
+</body>
